@@ -1,16 +1,17 @@
-#  FileZip — File Compressor
+#  FileZip — File Compressor & Extractor
 
-A lightweight desktop app to compress files and folders into ZIP archives. Built with Python and Tkinter.
+A lightweight desktop app to compress files and folders into ZIP archives, and extract them back. Built with Python and Tkinter.
 
 ---
 
 ##  Features
 
-- Add individual files or entire folders
-- Real-time compression progress bar
+-Compress individual files or entire folders into ZIP
+- Extract any ZIP file with a live progress bar
+- Preview ZIP contents before extracting
 - Shows original size, compressed size, and space saved
+- Auto opens destination folder after extraction
 - Clean dark-themed UI
-- Runs on Windows, macOS, and Linux
 
 ---
 
@@ -20,8 +21,8 @@ A lightweight desktop app to compress files and folders into ZIP archives. Built
 
 1. **Clone the repo**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/FileZip.git
-   cd FileZip
+   git clone https://github.com/iswarya-0901/file-compressor.git
+   cd file-compressor
    ```
 
 2. **Install dependencies** *(only needed to build the .exe)*
@@ -54,7 +55,7 @@ pyinstaller --onefile --windowed --name "FileZip" --icon="assets/icon.ico" app.p
 ##  Project Structure
 
 ```
-FileZip/
+file-compressor/
 ├── app.py              # Main application
 ├── requirements.txt    # Build dependencies
 ├── .gitignore          # Git ignore rules
