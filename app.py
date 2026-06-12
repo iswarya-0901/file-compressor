@@ -54,12 +54,14 @@ class FileCompressorApp:
         self.root.resizable(False, False)
         self.root.configure(bg=BG)
 
-        self.files = []
+        self.files = []       # list of selected paths
         self.output_path = tk.StringVar(value="")
 
         self._build_ui()
 
+    # ── UI ────────────────────────────────────────────────────────
     def _build_ui(self):
+        # Header
         hdr = tk.Frame(self.root, bg=BG, pady=20)
         hdr.pack(fill="x", padx=30)
 
@@ -70,14 +72,20 @@ class FileCompressorApp:
         tk.Label(title_frame, text="Compress files & folders into ZIP archives",
                  font=FONT_SM, bg=BG, fg=TEXT_DIM).pack(anchor="w")
 
+        # Drop zone / file list card
         self._build_file_zone()
+
+        # Output section
         self._build_output_section()
+
+        # Compress button + stats
         self._build_bottom()
 
     def _build_file_zone(self):
         card = tk.Frame(self.root, bg=CARD, bd=0, relief="flat")
         card.pack(fill="x", padx=30, pady=(0, 14))
 
+        # Card header row
         row = tk.Frame(card, bg=CARD, pady=10, padx=16)
         row.pack(fill="x")
         tk.Label(row, text="Files to Compress", font=FONT_BOLD, bg=CARD, fg=TEXT).pack(side="left")
@@ -95,8 +103,10 @@ class FileCompressorApp:
                   relief="flat", padx=10, pady=4, cursor="hand2",
                   command=self.clear_files).pack(side="left")
 
+        # Divider
         tk.Frame(card, bg="#243356", height=1).pack(fill="x")
 
+        # Listbox area
         list_frame = tk.Frame(card, bg=CARD, padx=16, pady=10)
         list_frame.pack(fill="both")
 
@@ -112,12 +122,14 @@ class FileCompressorApp:
         scrollbar.pack(side="right", fill="y")
         self.listbox.pack(fill="both", expand=True)
 
+        # Empty state label
         self.empty_label = tk.Label(
             list_frame, text="No files added yet.\nClick '+ Add Files' or '+ Add Folder' to get started.",
             font=FONT_SM, bg=CARD, fg=TEXT_DIM, justify="center"
         )
         self.empty_label.place(relx=0.5, rely=0.5, anchor="center")
 
+        # Remove selected button
         tk.Button(card, text="✕  Remove Selected", font=FONT_SM, bg=CARD, fg=DANGER,
                   relief="flat", pady=6, cursor="hand2",
                   command=self.remove_selected).pack(anchor="e", padx=16, pady=(0, 10))
@@ -146,12 +158,14 @@ class FileCompressorApp:
         bottom = tk.Frame(self.root, bg=BG)
         bottom.pack(fill="x", padx=30, pady=(0, 20))
 
+        # Progress bar
         self.progress = ttk.Progressbar(bottom, orient="horizontal", mode="determinate", length=620)
         style = ttk.Style()
         style.theme_use("default")
         style.configure("TProgressbar", troughcolor=CARD, background=ACCENT, thickness=6)
         self.progress.pack(fill="x", pady=(0, 12))
 
+        # Stats row
         stats_row = tk.Frame(bottom, bg=BG)
         stats_row.pack(fill="x", pady=(0, 12))
 
@@ -164,9 +178,11 @@ class FileCompressorApp:
         self.lbl_saved = tk.Label(stats_row, text="Saved: —", font=FONT_SM, bg=BG, fg=TEXT_DIM)
         self.lbl_saved.pack(side="left")
 
+        # Status label
         self.lbl_status = tk.Label(bottom, text="", font=FONT_SM, bg=BG, fg=TEXT_DIM)
         self.lbl_status.pack(anchor="w", pady=(0, 10))
 
+        # Compress button
         self.btn_compress = tk.Button(
             bottom, text="🗜  Compress to ZIP", font=("Segoe UI", 12, "bold"),
             bg=ACCENT2, fg=TEXT, relief="flat", padx=24, pady=12,
@@ -174,6 +190,7 @@ class FileCompressorApp:
         )
         self.btn_compress.pack(fill="x")
 
+    # ── Actions ───────────────────────────────────────────────────
     def add_files(self):
         paths = filedialog.askopenfilenames(title="Select Files")
         for p in paths:
@@ -223,6 +240,7 @@ class FileCompressorApp:
         if not self.output_path.get():
             messagebox.showwarning("No Output", "Please choose where to save the ZIP file.")
             return
+        # Run in thread so UI doesn't freeze
         threading.Thread(target=self._compress, daemon=True).start()
 
     def _compress(self):
@@ -235,6 +253,7 @@ class FileCompressorApp:
 
         output = self.output_path.get()
 
+        # Collect all files to zip
         all_files = []
         for path in self.files:
             if os.path.isfile(path):
@@ -281,6 +300,7 @@ class FileCompressorApp:
             self.btn_compress.config(state="normal", text="🗜  Compress to ZIP")
 
 
+# ── Run ───────────────────────────────────────────────────────────
 if __name__ == "__main__":
     root = tk.Tk()
     app = FileCompressorApp(root)
