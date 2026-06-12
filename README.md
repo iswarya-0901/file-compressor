@@ -1,4 +1,4 @@
-# 📦 FileZip — File Compressor
+#  FileZip — File Compressor
 
 A lightweight desktop app to compress files and folders into ZIP archives. Built with Python and Tkinter.
 
@@ -8,7 +8,7 @@ A lightweight desktop app to compress files and folders into ZIP archives. Built
 
 ---
 
-## ✨ Features
+##  Features
 
 - Add individual files or entire folders
 - Real-time compression progress bar
@@ -18,7 +18,7 @@ A lightweight desktop app to compress files and folders into ZIP archives. Built
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Run from source
 
@@ -40,7 +40,7 @@ A lightweight desktop app to compress files and folders into ZIP archives. Built
 
 ---
 
-## 🛠️ Build the `.exe` (Windows)
+##  Build the `.exe` (Windows)
 
 ```bash
 pyinstaller --onefile --windowed --name "FileZip" app.py
@@ -55,7 +55,7 @@ pyinstaller --onefile --windowed --name "FileZip" --icon="assets/icon.ico" app.p
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 FileZip/
@@ -68,13 +68,13 @@ FileZip/
 
 ---
 
-## 📦 Dependencies
+##  Dependencies
 
 - **Python 3.8+** — standard library only (`tkinter`, `zipfile`, `threading`)
 - **PyInstaller** — only needed to build the `.exe`
 
 ---
 
-## 📄 License
+##  License
 
 MIT License — free to use, modify, and distribute.
