@@ -2,10 +2,6 @@
 
 A lightweight desktop app to compress files and folders into ZIP archives. Built with Python and Tkinter.
 
-![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python)
-![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey)
-![License](https://img.shields.io/badge/License-MIT-green)
-
 ---
 
 ##  Features
@@ -73,8 +69,4 @@ FileZip/
 - **Python 3.8+** — standard library only (`tkinter`, `zipfile`, `threading`)
 - **PyInstaller** — only needed to build the `.exe`
 
----
 
-##  License
-
-MIT License — free to use, modify, and distribute.
