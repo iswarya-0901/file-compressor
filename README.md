@@ -17,10 +17,10 @@ A lightweight desktop app to compress files and folders into ZIP archives, and e
 ## 📸 Screenshots
 
 ### Compress
-![Compress Tab](screenshots/compress.png)
+![Compress Tab](screenshots/compress.jpg)
 
 ### Extract
-![Extract Tab](screenshots/extract.png)
+![Extract Tab](screenshots/extract.jpg)
 ---
 
 ##  Getting Started
