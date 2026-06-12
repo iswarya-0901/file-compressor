@@ -14,6 +14,14 @@ A lightweight desktop app to compress files and folders into ZIP archives, and e
 - Clean dark-themed UI
 
 ---
+## 📸 Screenshots
+
+### Compress
+![Compress Tab](screenshots/compress.png)
+
+### Extract
+![Extract Tab](screenshots/extract.png)
+---
 
 ##  Getting Started
 
